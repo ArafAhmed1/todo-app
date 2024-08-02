@@ -12,8 +12,10 @@ complete_button = sg.Button("Complete")
 exit_button = sg.Button("Exit")
 
 window = sg.Window('My To-Do App',
-                   layout=[[label], [input_box, add_button], [list_box, edit_button],
-                           [complete_button, exit_button]],
+                   layout=[[label],
+                           [input_box, add_button],
+                           [list_box, edit_button, complete_button],
+                           [exit_button]],
                    font=('Helvetica', 15))
 
 while True:
@@ -49,7 +51,8 @@ while True:
             todos = functions.get_todos()
             todos.remove(todo)
             functions.write_todos(todos)
-            window['todos'].update(todos)
+            window['todos'].update(values=todos)
+            window['todo'].update(value="")
         case "Exit":
             break
         case sg.WIN_CLOSED:
