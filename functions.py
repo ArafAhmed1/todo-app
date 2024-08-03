@@ -10,4 +10,5 @@ def get_todos():
 def write_todos(todo):
     with open(FILEPATH, "w") as file:
         for item in todo:
-            file.write(item)
+            if item != "\n":
+                file.write(item)
